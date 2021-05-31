@@ -18,5 +18,6 @@
 		<module>flairkit.parent</module>
 		<module>features</module>
 		<module>rest-ep</module>
+		<module>itest</module>
 	</modules>
 </project>
