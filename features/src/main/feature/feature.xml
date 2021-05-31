@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features name="${project.artifactId}-${project.version}"
+	xmlns="http://karaf.apache.org/xmlns/features/v1.4.0">
+
+	<repository>mvn:org.apache.karaf.features/standard/${karaf.version}/xml/features</repository>
+	<repository>mvn:org.apache.karaf.features/enterprise/${karaf.version}/xml/features</repository>
+	<repository>mvn:org.apache.cxf.karaf/apache-cxf/${cxf.version}/xml/features</repository>
+	
+	<feature name="flairkit-jackson" version="${project.version}">
+		<bundle>mvn:com.fasterxml.jackson.core/jackson-core/${jackson.version}</bundle>
+		<bundle>mvn:com.fasterxml.jackson.core/jackson-annotations/${jackson.version}</bundle>
+		<bundle>mvn:com.fasterxml.jackson.core/jackson-databind/${jackson.version}</bundle>
+		<bundle>mvn:com.fasterxml.jackson.datatype/jackson-datatype-jsr310/${jackson.version}</bundle>
+	</feature>
+	
+	<feature name="flairkit-test" version="${project.version}">
+		
+		<feature dependency="true">aries-blueprint</feature>
+        <feature version="${cxf.version}" dependency="true">cxf</feature>
+
+		<feature dependency="true">http</feature>
+		<requirement>osgi.service;effective:=active;filter:=(objectClass=org.osgi.service.http.HttpService)</requirement>
+		
+		<!-- Swagger/OpenAPI -->
+		<feature dependency="true">cxf-rs-description-openapi-v3</feature>
+
+		<feature dependency="true">flairkit-jackson</feature>
+		
+		<bundle dependency="true">mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-base/${jackson.version}</bundle>
+        <bundle dependency="true">mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/${jackson.version}</bundle>
+
+        <bundle>mvn:com.flairbit.iot/rest-ep/${project.version}</bundle>
+
+	</feature>
+</features>
