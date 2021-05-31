@@ -1,6 +1,10 @@
 # karaf-4211-cxf-swagger
 
-Demonstrates the karaf + swagger + cxf integration problems in Karaf 4.2.11:
+```
+mvn install
+```
+
+demonstrates the karaf + swagger + cxf integration problems in Karaf 4.2.11:
 
 - UnsupportedOperationException on feature resolution
 - ClassNotFoundException: org.osgi.service.http.HttpService not found by org.apache.cxf.cxf-rt-transports-http  
